@@ -1,0 +1,10 @@
+streamlit
+mediapipe
+cv2
+numpy
+tempfile
+PIL
+pandas
+tensorflow
+matplotlib
+tensorflow

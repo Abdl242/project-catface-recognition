@@ -32,6 +32,10 @@ def model_20():
 
     return model
 
+
+
+
+
 def open_image(pathim):
     try:
         return np.array(Image.open(pathim).resize((100,100)))
