@@ -1,10 +1,8 @@
 opencv-contrib-python==4.6.0.66
 opencv-python==4.6.0.66
 streamlit
-mediapipe-silicon==0.8.11
-
+mediapipe
 numpy
-
 Pillow==9.2.0
 pandas
 tensorflow
