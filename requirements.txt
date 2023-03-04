@@ -1,6 +1,8 @@
+opencv-contrib-python==4.6.0.66
+opencv-python==4.6.0.66
 streamlit
 mediapipe
-cv2
+
 numpy
 tempfile
 PIL
