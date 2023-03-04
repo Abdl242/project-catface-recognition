@@ -5,7 +5,7 @@ mediapipe
 
 numpy
 
-PIL
+Pillow==9.2.0
 pandas
 tensorflow
 matplotlib
