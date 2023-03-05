@@ -1,5 +1,4 @@
-opencv-contrib-python==4.6.0.66
-opencv-python==4.6.0.66
+opencv-python-headless
 streamlit
 mediapipe==0.9.1.0
 numpy
