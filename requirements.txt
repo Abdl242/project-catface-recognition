@@ -7,3 +7,6 @@ pandas
 tensorflow
 matplotlib
 tensorflow==2.10.0
+fastapi
+pytz
+uvicorn

@@ -1,7 +1,7 @@
 import cv2
-from rescale import rescaleframe,image_resize,scale_model
+from catface.utils.rescale import rescaleframe,image_resize,scale_model
 import numpy as np
-
+import requests
 
 
 def transform_video(vid,face_mesh,haar,human_face,breed_list,model,stframe,record,out,i):
@@ -60,6 +60,7 @@ def transform_video(vid,face_mesh,haar,human_face,breed_list,model,stframe,recor
         frame = cv2.resize(frame,(0,0),fx = 0.8 , fy = 0.8)
         frame = image_resize(image = frame, width = 640)
         stframe.image(frame,channels = 'BGR',use_column_width=True)
+
 
 def transform_image(face_mesh,image,haar,human_face,breed_list,model,st):
 

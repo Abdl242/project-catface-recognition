@@ -1,6 +1,6 @@
 import cv2 as cv
-from rescale import rescaleframe,scale_model
-from model_creation import model_20, open_image
+from catface.utils.rescale import rescaleframe,scale_model
+from catface.ml.model_creation import model_20, open_image
 import tensorflow
 import pandas as pd
 import numpy as np

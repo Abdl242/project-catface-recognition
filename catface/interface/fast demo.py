@@ -8,7 +8,7 @@ import numpy as np
 import tempfile
 import time
 from PIL import Image
-from rescale import image_resize
+from catface.utils.rescale import image_resize
 
 mp_drawing = mp.solutions.drawing_utils
 mp_face_mesh = mp.solutions.face_mesh

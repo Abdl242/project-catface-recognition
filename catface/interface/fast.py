@@ -8,24 +8,25 @@ import numpy as np
 import tempfile
 import time
 from PIL import Image
-from rescale import rescaleframe,scale_model
-from model_creation import model_20, open_image
+from catface.utils.rescale import rescaleframe,scale_model
+from catface.ml.model_creation import model_20, open_image
 import pandas as pd
-from rescale import image_resize
-from media_transformation import transform_video,transform_image
+from catface.utils.rescale import image_resize
+from catface.utils.media_transformation import transform_video,transform_image
 
-haar = cv2.CascadeClassifier('haar_cat.xml')
-human_face =cv2.CascadeClassifier('haar_human.xml')
+haar = cv2.CascadeClassifier('catface/face-detection/haar_cat.xml')
+human_face =cv2.CascadeClassifier('catface/face-detection/haar_human.xml')
 
 model = model_20()
+
 model.load_weights('model/')
 breed_list = list(pd.read_csv('data/breed.csv')['0'])
 
 mp_drawing = mp.solutions.drawing_utils
 mp_face_mesh = mp.solutions.face_mesh
 
-DEMO_VIDEO = 'videos/cat_video.mp4'
-DEMO_IMAGE = 'images/cat.jpg'
+DEMO_VIDEO = 'data/videos/cat_video.mp4'
+DEMO_IMAGE = 'data/images/cat.jpg'
 
 st.title('Face Mesh Application using MediaPipe')
 
@@ -142,8 +143,9 @@ if  app_mode =='Run on Video':
     # min_tracking_confidence=tracking_confidence ,
     # max_num_faces = max_faces
     ) as face_mesh:
-        transform_video(vid,face_mesh,haar,human_face,breed_list,model,stframe,record,out,i)
+        fr = transform_video(vid,face_mesh,haar,human_face,breed_list,model,stframe,record,out,i)
 
+    st.text(fr)
     st.text('Video Processed')
 
     output_video = open('output1.mp4','rb')
@@ -195,6 +197,7 @@ elif app_mode =='Run on Image':
         demo_image = DEMO_IMAGE
         image = np.array(Image.open(demo_image))
 
+
     st.sidebar.text('Original Image')
     st.sidebar.image(image)
     face_count = 0
@@ -202,8 +205,8 @@ elif app_mode =='Run on Image':
     with mp_face_mesh.FaceMesh(
     static_image_mode=True) as face_mesh:
 
-        transform_image(face_mesh,image,haar,human_face,breed_list,model,st)
-
+        response =transform_image(face_mesh,image,haar,human_face,breed_list,model,st)
+    st.sidebar.text(response)
 
 elif  app_mode =='About App':
     st.markdown('In this application we are using **MediaPipe** for creating a Face Mesh. **StreamLit** is to create the Web Graphical User Interface (GUI) ')
