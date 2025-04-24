@@ -17,9 +17,9 @@ from catface.utils.media_transformation import transform_video,transform_image
 haar = cv2.CascadeClassifier('catface/face-detection/haar_cat.xml')
 human_face =cv2.CascadeClassifier('catface/face-detection/haar_human.xml')
 
-model = model_20()
+#model = model_20()
 
-model.load_weights('model/')
+#model.load_weights('model/')
 breed_list = list(pd.read_csv('data/breed.csv')['0'])
 
 mp_drawing = mp.solutions.drawing_utils
@@ -138,14 +138,14 @@ if  app_mode =='Run on Video':
 
     st.markdown("<hr/>", unsafe_allow_html=True)
 
-    with mp_face_mesh.FaceMesh(
+    #with mp_face_mesh.FaceMesh(
     # min_detection_confidence=detection_confidence,
     # min_tracking_confidence=tracking_confidence ,
     # max_num_faces = max_faces
-    ) as face_mesh:
-        fr = transform_video(vid,face_mesh,haar,human_face,breed_list,model,stframe,record,out,i)
+    #) as face_mesh:
+   #     fr = transform_video(vid,face_mesh,haar,human_face,breed_list,model,stframe,record,out,i)
 
-    st.text(fr)
+    #st.text(fr)
     st.text('Video Processed')
 
     output_video = open('output1.mp4','rb')
